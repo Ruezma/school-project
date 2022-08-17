@@ -10,7 +10,7 @@ int main()
         sum += data[i];
     }
     printf("Summation : %d\n", sum);
-    printf("Average : %.2u\n", sum / (sizeof(data) / sizeof(*data)));
+    printf("Average : %.2f\n", (float) sum / (sizeof(data) / sizeof(*data)));
     
     //Find the maximum value
     sum = 0;
