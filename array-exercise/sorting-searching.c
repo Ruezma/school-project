@@ -2,23 +2,23 @@
 
 int main()
 {
-    int sortlist[10] = {45, 20, 30, 100, 95, 70, 75, 55, 85, 90};
-    int finderNumber, counter = 0;
+    int storage[10] = {45, 20, 30, 100, 95, 70, 75, 55, 85, 90};
+    int findNumber, counter = 0;
     
     printf("Find a number : ");
-    scanf("%d", &finderNumber);
+    scanf("%d", &findNumber);
     
     //Searching system
     for(;;)
     {
-        if (counter == sizeof(sortlist)/sizeof(*sortlist))
+        if (findNumber == storage[counter])
         {
-            printf("No number found\n");
+            printf("The number %d is at index %d\n", findNumber, counter);            
             break;
         }
-        else if (finderNumber == sortlist[counter])
+        else if (counter == sizeof(storage)/sizeof(*storage))
         {
-            printf("The number %d is at index %d\n", finderNumber, counter);
+            printf("No number found\n");
             break;
         }
         counter++;
@@ -26,22 +26,23 @@ int main()
     
     //Sorting system
     int temporary;
-    for(counter = 0; counter < (sizeof(sortlist)/sizeof(*sortlist)) - 1; counter++)
+    for(counter = 0; counter < (sizeof(storage)/sizeof(*storage)) - 1; counter++)
     {
-        for(int count = 0; count < (sizeof(sortlist)/sizeof(*sortlist)) - 1; count++)
+        for(int o = 0; o < (sizeof(storage)/sizeof(*storage)) - 1; o++)
         {
-            if (sortlist[count] > sortlist[count + 1])
+            if (storage[o] > storage[o + 1])
             {
-                temporary = sortlist[count + 1];
-                sortlist[count + 1] = sortlist[count];
-                sortlist[count] = temporary;
+                temporary = storage[o + 1];
+                storage[o + 1] = storage[o];
+                storage[o] = temporary;
             }
         }
     }
     
-    for (counter = 0; counter < sizeof(sortlist) / sizeof(*sortlist); counter++)
+    printf("Sorted array : ");
+    for (counter = 0; counter < sizeof(storage) / sizeof(*storage); counter++)
     {
-        printf("%d\t", sortlist[counter]);
+        printf("%d > ", storage[counter]);
     }
     
     return 0;
